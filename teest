@@ -1,0 +1,38 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+
+const gold = "#d6aa5c"; // اللون الذهبي المفضل
+
+export default function LumoraHome() {
+  return (
+    <div className="min-h-screen bg-[#3e2c23] text-white px-4 py-8">
+      <header className="flex flex-col items-center gap-4 mb-10">
+        <Image src="/logo.png" alt="LUMORA logo" width={100} height={100} />
+        <h1 className="text-4xl font-serif" style={{ color: gold }}>LUMORA</h1>
+        <p className="text-center max-w-xl text-lg">شوكولاتة فاخرة مصنوعة بعناية لتمنحك لحظة سعادة لا تُنسى</p>
+      </header>
+
+      <main className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {[
+          { name: "شوكولاتة داكنة", img: "/dark-chocolate.jpg", desc: "مذاق غني لعشاق الكاكاو النقي" },
+          { name: "شوكولاتة بالحليب", img: "/milk-chocolate.jpg", desc: "قوام ناعم وطعم لا يُقاوم" },
+          { name: "علبة هدايا فاخرة", img: "/gift-box.jpg", desc: "أفضل خيار للإهداء في المناسبات" },
+        ].map((product, i) => (
+          <Card key={i} className="bg-[#5a4032] text-white border-none">
+            <CardContent className="p-4 flex flex-col items-center gap-4">
+              <Image src={product.img} alt={product.name} width={200} height={200} className="rounded-2xl" />
+              <h2 className="text-xl font-semibold" style={{ color: gold }}>{product.name}</h2>
+              <p className="text-sm text-center">{product.desc}</p>
+              <Button className="mt-2" style={{ backgroundColor: gold, color: "#3e2c23" }}>اطلب الآن</Button>
+            </CardContent>
+          </Card>
+        ))}
+      </main>
+
+      <footer className="text-center text-sm mt-20 text-[#d6c6b3]">
+        © 2025 LUMORA. جميع الحقوق محفوظة.
+      </footer>
+    </div>
+  );
+}
